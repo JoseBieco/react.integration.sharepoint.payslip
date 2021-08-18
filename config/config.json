@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "holerite-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/holerite/HoleriteWebPart.js",
+          "manifest": "./src/webparts/holerite/HoleriteWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HoleriteWebPartStrings": "lib/webparts/holerite/loc/{locale}.js"
+  }
+}
