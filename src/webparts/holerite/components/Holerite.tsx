@@ -20,18 +20,18 @@ export default class Holerite extends React.Component<HoleriteWebPartProps, Hole
       this.setState({games_in: []});
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/pikachu`)
       let newHolerite: HoleriteProps = HoleriteInitialProps;
-      
+
       newHolerite.name = response.data.name;
       newHolerite.weight = response.data.weight;
       newHolerite.order = response.data.order;
       newHolerite.img = response.data.sprites.front_shiny ? response.data.sprites.front_shiny : response.data.sprites.front_default;
-      
+
       if(!this.state.games_in.length){
         response.data.game_indices.map((game: Game) => {
           newHolerite.games_in.push(game);
         });
       }
-      
+
       this.setState(newHolerite);
     }catch(error){
       console.log(error);
@@ -75,12 +75,11 @@ export default class Holerite extends React.Component<HoleriteWebPartProps, Hole
 }
 
 // <p className={ styles.description }>{escape(this.props.description)}</p>
-//https://pokeapi.co/api/v2/pokemon/nome_pokemon
 
 /* const Holerite: React.FC<HoleriteWebPartProps> = ({description}, HoleriteWebPartProps) => {
   return(
     <div>{description}</div>
   )
-} 
+}
   export default Holerite;
 */
