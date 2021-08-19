@@ -9,7 +9,6 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'HoleriteWebPartStrings';
 import Holerite from './components/Holerite';
-import { HoleriteProps } from './components/HoleriteProps';
 
 export interface HoleriteWebPartProps {
   description: string;
