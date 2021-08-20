@@ -17,17 +17,18 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Holerite: React.FC<HoleriteWebPartProps> = ({description}, HoleriteWebPartProps) => {
+const Holerite: React.FC<HoleriteWebPartProps> = ({description, context}, HoleriteWebPartProps) => {
   const classes = useStyles();
   const [state, setState] = useState<HoleriteState>(HOLERITE_INITIAL_STATE);
 
+  console.log(context);
   return(
     <div className={classes.root}>
        <Grid container spacing={3}>
          <SearchButton state={state} setState={setState} />
-        <Grid item xs={12}>
-          <HoleriteDisplay />
-        </Grid>
+          <Grid item xs={12}>
+            <HoleriteDisplay />
+          </Grid>
       </Grid>
     </div>
   )
