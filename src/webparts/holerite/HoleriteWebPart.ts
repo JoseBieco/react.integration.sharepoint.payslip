@@ -5,7 +5,7 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-property-pane';
-import { BaseClientSideWebPart, WebPartContext } from '@microsoft/sp-webpart-base';
+import { BaseClientSideWebPart, BaseWebPart, WebPartContext } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'HoleriteWebPartStrings';
 import Holerite from './components/Holerite';
@@ -13,15 +13,16 @@ import Holerite from './components/Holerite';
 export interface HoleriteWebPartProps {
   description: string;
   context: WebPartContext;
+  properties: any;
 }
 export default class HoleriteWebPart extends BaseClientSideWebPart<HoleriteWebPartProps> {
-
   public render(): void {
     const element: React.ReactElement<HoleriteWebPartProps> = React.createElement(
       Holerite,
       {
         description: this.properties.description,
         context:  this.context,
+        properties: this.properties
       }
     );
 
