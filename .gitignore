@@ -31,3 +31,8 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+.env
+
+# Certificate
+*.cer
