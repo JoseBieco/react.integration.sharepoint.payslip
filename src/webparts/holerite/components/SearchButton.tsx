@@ -47,6 +47,7 @@ const SearchButton: React.FC<SearchButtonProps> = ({ state, setMonthCode, setLoa
   };
 
   const onSubmit = (): void => {
+    if(!code) return;
     getHolerite();
   };
 
