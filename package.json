@@ -17,6 +17,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.12.1",
     "@microsoft/sp-property-pane": "1.12.1",
     "@microsoft/sp-webpart-base": "1.12.1",
+    "@types/webpack-env": "^1.16.2",
     "axios": "^0.21.1",
     "office-ui-fabric-react": "7.156.0",
     "react": "16.9.0",
