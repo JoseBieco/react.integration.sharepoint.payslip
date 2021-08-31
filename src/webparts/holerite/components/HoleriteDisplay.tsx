@@ -11,60 +11,29 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       flexGrow: 1,
       padding: theme.spacing(1),
+      height: 500,
     },
     noMarginPadding: {
       margin: 0,
       padding: 0
     },
-    fontBold: {
-      fontWeight: 'bold'
-    },
-    textMargin: {
-      padding: 5
-    },
-    displayContentContainer: {
-      margin: 0,
-      padding: 15,
-    },
-    border: {
-      padding: 2,
-      border: '1px solid black',
-    },
-    paper: {
-      padding: theme.spacing(1),
-    },
-    cardRoot: {
-      maxWidth: 345,
-    },
-    media: {
-      height: 0,
-      paddingTop: '56.25%', // 16:9
-    },
   }),
 );
 
 interface HoleriteDisplayProps {
-
+  file: string;
 }
 
-const HoleriteDisplay: React.FC<HoleriteDisplayProps> = (props) => {
+const HoleriteDisplay: React.FC<HoleriteDisplayProps> = ({ file }: HoleriteDisplayProps) => {
   const classes = useStyles();
 
   return(
-    <>
-      <Grid container className={classes.root}>
-        <Grid item xs={12} className={classes.noMarginPadding}>
-          <Typography variant="subtitle1" align="center" className={classes.fontBold}>EMPRESA CAPITALISTA DE EXPLORAÇÃO DO TRAABALHO</Typography>
-          <Typography variant="subtitle1" align="center" className={classes.fontBold}>CNPJ: 66.666.666/0001-66</Typography>
-          <Typography variant="body1" align="center" gutterBottom style={{ marginTop: 20 }} className={classes.fontBold}>
-            Demonstrativo de Pagamento
-          </Typography>
-        </Grid>
+    <Grid container className={classes.root} justifyContent="center">
+      <Grid item className={classes.noMarginPadding}>
+        <FileViewer file={file}/>
       </Grid>
-      <HoleriteForm />
-      <FileViewer />
-    </>
+    </Grid>
     );
-}
+};
 
 export default HoleriteDisplay;
