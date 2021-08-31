@@ -87,7 +87,7 @@ const HoleriteForm: React.FC<HoleriteFormProps> = () => {
         </Grid>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
-export default HoleriteForm
+export default HoleriteForm;
