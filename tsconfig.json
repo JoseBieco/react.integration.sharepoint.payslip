@@ -19,7 +19,8 @@
       "./node_modules/@microsoft"
     ],
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "node"
     ],
     "lib": [
       "es5",
@@ -30,6 +31,6 @@
   },
   "include": [
     "src/**/*.ts",
-    "src/**/*.tsx"
-  ]
+    "src/**/*.tsx",
+    "src/webparts/holerite/components/Holerite.tsx"  ]
 }
