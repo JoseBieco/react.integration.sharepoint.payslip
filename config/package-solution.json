@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "react-share-point-client-side-solution",
+    "name": "holerite-webpart",
     "id": "6ce4313e-454b-4f46-9616-b4e554713594",
-    "version": "1.0.0.0",
+    "version": "1.0.1.1",
     "includeClientSideAssets": true,
-    "isDomainIsolated": true,
+    "isDomainIsolated": false,
     "developer": {
-      "name": "",
+      "name": "José Eduardo Saroba Bieco",
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
