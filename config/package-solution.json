@@ -3,7 +3,7 @@
   "solution": {
     "name": "holerite-webpart",
     "id": "6ce4313e-454b-4f46-9616-b4e554713594",
-    "version": "1.0.1.1",
+    "version": "1.0.2.3",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
