@@ -3,7 +3,7 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import { HoleriteWebPartProps } from '../HoleriteWebPart';
 import { useState } from 'react';
 import { Error, Holerite, HoleriteState, HOLERITE_INITIAL_STATE } from './HoleriteProps';
-import { Paper, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import SearchButton from './SearchButton';
 import HoleriteDisplay from './HoleriteDisplay';
 import { Api } from '../../../index';
@@ -48,6 +48,30 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({description, context, propert
     return !validatedCode || validatedCode.length !== code.length;
   };
 
+  const getValidPayslipList = (holerites: Array<Holerite>): Array<Holerite> => {
+    const list: Array<Holerite> = [];
+    var monthCount: number = 0;
+    var iperi: string = '';
+
+    for(let i = 0; i < holerites.length && monthCount < 13; i++){
+      let item = holerites[i];
+
+      // Check if the new item IPERI is the same as the last one. If it's true, monthCount increases in one
+      if(item.IPERI !== iperi){
+        iperi = item.IPERI;
+        monthCount++;
+      }
+
+      if(monthCount < 13){
+        list.push({CODIGO: item.CODIGO, DESCRICAO: item.DESCRICAO, IPERI: item.IPERI});
+      }else {
+        break;
+      }
+    }
+
+    return list;
+  };
+
   /**
    * Load all the Payslip list from the logged user
    */
@@ -85,8 +109,9 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({description, context, propert
         }
 
         const list: Holerite[] = [];
-        let reversedArray = response.data.MT_Holerite_RES.ERP.Content.reverse();
-        for(let i = 0; i < reversedArray.length && i < 12; i++){
+        let reversedArray = getValidPayslipList(response.data.MT_Holerite_RES.ERP.Content.reverse());
+
+        for(let i = 0; i < reversedArray.length; i++){
           let item = reversedArray[i];
           list.push({CODIGO: item.CODIGO, DESCRICAO: item.DESCRICAO, IPERI: item.IPERI});
         }
