@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Button, TextField, Grid, Paper, ButtonGroup, Tooltip } from '@material-ui/core';
+import { Button, Grid, Paper, ButtonGroup, Tooltip } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'cenetr',
     },
     formControl: {
-      minWidth: 120,
+      minWidth: 160,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -68,6 +68,18 @@ const SearchButton: React.FC<SearchButtonProps> = ({ state, setMonthCode, setLoa
   };
 
   /**
+   * Get the holerite description and returns it to display
+   * @param data String
+   * @returns String
+   */
+  const setDescription = (data: string): string => {
+    if(data == '1313') {
+      return '13°';
+    }
+    return data;
+  };
+
+  /**
    * From state.holerites, render the menu items
    * @returns Array of JSX Element
    */
@@ -77,7 +89,7 @@ const SearchButton: React.FC<SearchButtonProps> = ({ state, setMonthCode, setLoa
     for(let i = 0; i < state.holerites.length; i++){
       const item = state.holerites[i];
       itemsToRender.push(
-        <MenuItem value={item.CODIGO}>{dataFormat(item.IPERI)}</MenuItem>
+        <MenuItem value={item.CODIGO}>{`${dataFormat(item.IPERI)} - ${setDescription(item.DESCRICAO)}`}</MenuItem>
       );
     }
     return itemsToRender;
