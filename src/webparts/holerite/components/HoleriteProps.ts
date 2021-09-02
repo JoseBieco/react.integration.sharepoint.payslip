@@ -21,7 +21,6 @@ export interface Holerite {
   CODIGO: string;
   DESCRICAO: string;
   IPERI: string;
-  file?: Blob;
 }
 
 export interface Error {
