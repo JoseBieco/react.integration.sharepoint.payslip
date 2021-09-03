@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Holerite: React.FC<HoleriteWebPartProps> = ({description, context, properties}: HoleriteWebPartProps) => {
+const Holerite: React.FC<HoleriteWebPartProps> = ({context, properties}: HoleriteWebPartProps) => {
   const classes = useStyles();
   const api = new Api(properties.api_user , properties.api_password , properties.api_url);
 
@@ -33,8 +33,23 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({description, context, propert
   const [fail, setFail] = useState(false);
   const [file, setFile] = useState('');
   const [monthCode, setMonthCode] = useState('');
+  const [code, setCode] = useState('');
+  const [name, setName] = useState('');
 
-  // TODO: Create a function that recives a message and set it on state.error
+  const setPayslipNameFromCode = (data: string): string => {
+    let holerite: Holerite = {CODIGO: '', DESCRICAO: '', IPERI: ''};
+
+    for(let i = 0; i < state.holerites.length; i++){
+      let item = state.holerites[i];
+
+      if(item.CODIGO === data){
+        holerite = item;
+        break;
+      }
+    }
+    return `${dataFormat(holerite.IPERI)}.${setDescription(holerite.DESCRICAO)}`;
+  };
+
   /**
    * Receive the user id and validates if the given string has only numbers
    * @param code String
@@ -144,6 +159,7 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({description, context, propert
           setState({...state, error: [...state.error, newErro]});
           setFail(true);
         }else {
+          setName(setPayslipNameFromCode(monthCode));
           setFile(response.data.MT_Holerite_RES.ERP.ContentBin);
           setLoadPage(true);
         }
@@ -153,6 +169,27 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({description, context, propert
       setState({...state, error: [...state.error, newErro]});
       setFail(true);
     }
+  };
+
+  /**
+ * Get unformated data (yyyymm) and retuns it on mm/yyyy format
+ * @param data String
+ * @returns String
+ */
+  const dataFormat = (data: string): string => {
+    return data.toString().slice(4) + '/' + data.toString().slice(0,4);
+  };
+
+  /**
+   * Get the holerite description and returns it to display
+   * @param data String
+   * @returns String
+   */
+  const setDescription = (data: string): string => {
+    if(data == '1313') {
+      return '13°';
+    }
+    return data;
   };
 
   return(
@@ -168,12 +205,13 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({description, context, propert
           <SearchButton
           state={state}
           setMonthCode={setMonthCode}
+          setPayslipCode={setCode}
           getHolerite={getHolerite}
           setLoadPage={() => setLoadPage(true)} />
         }
         {(loadPage && !fail) &&
           <Grid item xs={12} justifyContent="center">
-            <HoleriteDisplay file={file}/>
+            <HoleriteDisplay file={file} payslip_name={name}/>
           </Grid>
         }
       </Grid>
