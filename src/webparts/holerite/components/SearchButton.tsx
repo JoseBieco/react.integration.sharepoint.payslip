@@ -33,11 +33,12 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface SearchButtonProps {
   state: HoleriteState;
   setMonthCode: React.Dispatch<React.SetStateAction<string>>;
+  setPayslipCode:  React.Dispatch<React.SetStateAction<string>>;
   setLoadPage: () => void;
   getHolerite: () => void;
 }
 
-const SearchButton: React.FC<SearchButtonProps> = ({ state, setMonthCode, setLoadPage, getHolerite }: SearchButtonProps) => {
+const SearchButton: React.FC<SearchButtonProps> = ({ state, setMonthCode, setLoadPage, getHolerite, setPayslipCode }: SearchButtonProps) => {
   const classes = useStyles();
   const [code, setCode] = useState('');
 
