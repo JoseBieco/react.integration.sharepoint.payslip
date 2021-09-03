@@ -22,15 +22,16 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface HoleriteDisplayProps {
   file: string;
+  payslip_name: string;
 }
 
-const HoleriteDisplay: React.FC<HoleriteDisplayProps> = ({ file }: HoleriteDisplayProps) => {
+const HoleriteDisplay: React.FC<HoleriteDisplayProps> = ({ file, payslip_name }: HoleriteDisplayProps) => {
   const classes = useStyles();
 
   return(
     <Grid container className={classes.root} justifyContent="center">
       <Grid item className={classes.noMarginPadding}>
-        <FileViewer file={file}/>
+        <FileViewer file={file} payslip_name={payslip_name}/>
       </Grid>
     </Grid>
     );
