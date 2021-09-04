@@ -18,7 +18,7 @@ export class Api {
   private authHeader() {
     return {
       Accept: "application/json",
-      'Authorization': `Basic ${btoa(`${this.user}:${this.password}`)}`
+      'Authorization': `Basic ${Buffer.from(`${this.user}:${this.password}`).toString('base64')}`
     };
   }
 
