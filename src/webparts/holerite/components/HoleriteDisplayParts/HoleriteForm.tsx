@@ -14,10 +14,6 @@ const useStyles = makeStyles((theme: Theme) =>
     textMargin: {
       padding: 5
     },
-    border: {
-      padding: 2,
-      border: '1px solid black',
-    },
     paper: {
       padding: theme.spacing(1),
     },

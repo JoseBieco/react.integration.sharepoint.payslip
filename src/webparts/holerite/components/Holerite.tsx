@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
+import { makeStyles, createStyles } from '@material-ui/core/styles';
 import { HoleriteWebPartProps } from '../HoleriteWebPart';
 import { useState } from 'react';
 import { Error, Holerite, HoleriteState, HOLERITE_INITIAL_STATE } from './HoleriteProps';
@@ -9,7 +9,7 @@ import HoleriteDisplay from './HoleriteDisplay';
 import { Api } from '../../../index';
 import ErrorDisplay from './HoleriteDisplayParts/ErrorDisplay';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     root: {
       flexGrow: 1,
@@ -33,7 +33,6 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({context, properties}: Holerit
   const [fail, setFail] = useState(false);
   const [file, setFile] = useState('');
   const [monthCode, setMonthCode] = useState('');
-  const [code, setCode] = useState('');
   const [name, setName] = useState('');
 
   const setPayslipNameFromCode = (data: string): string => {
@@ -203,11 +202,10 @@ const Holerite: React.FC<HoleriteWebPartProps> = ({context, properties}: Holerit
         }
         {(!state.error.length) &&
           <SearchButton
-          state={state}
-          setMonthCode={setMonthCode}
-          setPayslipCode={setCode}
-          getHolerite={getHolerite}
-          setLoadPage={() => setLoadPage(true)} />
+            state={state}
+            setMonthCode={setMonthCode}
+            getHolerite={getHolerite}
+          />
         }
         {(loadPage && !fail) &&
           <Grid item xs={12} justifyContent="center">

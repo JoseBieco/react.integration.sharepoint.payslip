@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import { Card, CardActionArea, CardMedia, Grid, Paper, Typography } from '@material-ui/core';
-import HoleriteForm from './HoleriteDisplayParts/HoleriteForm';
+import { Grid } from '@material-ui/core';
 import FileViewer from './HoleriteDisplayParts/FileViewer';
 
 

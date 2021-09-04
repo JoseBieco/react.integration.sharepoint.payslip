@@ -6,7 +6,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { HoleriteState } from './HoleriteProps';
@@ -18,14 +17,8 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: 'center',
       color: theme.palette.text.secondary,
     },
-    holerite: {
-      justifyContent: 'cenetr',
-    },
     formControl: {
       minWidth: 160,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
     },
   }),
 );
@@ -33,12 +26,10 @@ const useStyles = makeStyles((theme: Theme) =>
 export interface SearchButtonProps {
   state: HoleriteState;
   setMonthCode: React.Dispatch<React.SetStateAction<string>>;
-  setPayslipCode:  React.Dispatch<React.SetStateAction<string>>;
-  setLoadPage: () => void;
   getHolerite: () => void;
 }
 
-const SearchButton: React.FC<SearchButtonProps> = ({ state, setMonthCode, setLoadPage, getHolerite, setPayslipCode }: SearchButtonProps) => {
+const SearchButton: React.FC<SearchButtonProps> = ({ state, setMonthCode, getHolerite }: SearchButtonProps) => {
   const classes = useStyles();
   const [code, setCode] = useState('');
 
